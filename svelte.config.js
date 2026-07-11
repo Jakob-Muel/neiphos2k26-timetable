@@ -3,9 +3,13 @@ import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 const config = {
   extensions: [".svelte"],
-
   preprocess: [vitePreprocess()],
-  kit: { adapter: adapter({ fallback: "index.html" }) },
+  kit: {
+    adapter: adapter({ fallback: "404.html" }),
+    paths: {
+      base: process.env.BASE_PATH ?? "",
+    },
+  },
 };
 
 export default config;
