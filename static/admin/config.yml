@@ -4,7 +4,7 @@ media_folder: "src/assets/images" # Location where files will be stored in the r
 public_folder: "src/assets/images" # The src attribute for uploaded media
 backend:
   # name, repo and site_domain are configured through CMS.init
-  base_url: https://sveltia-cms-auth.cloudflare-com-a47.workers.dev/
+  base_url: https://sveltia-cms-auth.jakob-mueller-arbeit.workers.dev
   commit_messages:
     create: "content: create {{collection}} “{{slug}}”"
     update: "content: update {{collection}} “{{slug}}”"
