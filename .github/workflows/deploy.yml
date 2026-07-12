@@ -34,6 +34,8 @@ jobs:
           PUBLIC_TIMETABLE_REPO: https://github.com/Jakob-Muel/neiphos2k26-timetable-data.git
         run: yarn build
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build

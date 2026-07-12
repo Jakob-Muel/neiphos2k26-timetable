@@ -1,6 +1,6 @@
-# Festival Timetable
+# Neiphos 2k26 Timetable
 
-A modern, responsive web application for displaying festival timetables for small to medium-sized festivals. Built with SvelteKit and designed for easy content management and offline support.
+A modern, responsive web application for displaying the Neiphos 2k26 festival timetable. Built with SvelteKit and designed for easy content management and offline support.
 
 ![Screenshot](screenshot.jpg)
 
@@ -33,8 +33,8 @@ A modern, responsive web application for displaying festival timetables for smal
 1. Clone the repository:
 
 ```bash
-git clone github.com/similicious/festival-timetable
-cd festival-timetable
+git clone https://github.com/Jakob-Muel/neiphos2k26-timetable
+cd neiphos2k26-timetable
 ```
 
 2. Install dependencies:
@@ -43,10 +43,10 @@ cd festival-timetable
 yarn install
 ```
 
-3. Clone a timetable into `./src/lib/data/timetable`
+3. Clone the timetable data into `./src/lib/data`
 
 ```bash
-git clone https://github.com/similicious/festival-timetable-cosy-2025 ./src/lib/data
+git clone https://github.com/Jakob-Muel/neiphos2k26-timetable-data ./src/lib/data
 ```
 
 4. Start the development server:
@@ -55,11 +55,12 @@ git clone https://github.com/similicious/festival-timetable-cosy-2025 ./src/lib/
 yarn dev
 ```
 
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
+5. Open [http://localhost:5173](http://localhost:5173) in your browser
 
 ## Content Management
 
-The application uses Sveltia CMS for content management with the timetable data located in an external repo. This allows you to grant access to third parties (e.g. event organisers) to maintain content data specifically.
+The application uses Sveltia CMS for content management with the timetable data located in an external repo ([neiphos2k26-timetable-data](https://github.com/Jakob-Muel/neiphos2k26-timetable-data)). This allows access to be granted to third parties (e.g. event organisers) to maintain the schedule content specifically.
+
 Access the admin interface at `/admin` to:
 
 - Add/edit stages and their schedules
@@ -69,16 +70,14 @@ Sveltia commits directly to the Git repository via the GitHub API.
 
 ## Deployment
 
-To build the application, both this app repo and a timetable repo need to be cloned before building. The `build` directory can be served thorugh a static hosting service.
+The app deploys automatically to GitHub Pages via the `Deploy to GitHub Pages` workflow (`.github/workflows/deploy.yml`) on every push to `main`. The workflow clones the timetable data, builds the site, and publishes it.
 
-The timetable repo URL is set through the `PUBLIC_TIMETABLE_REPO` environment variable.
+To build manually, both this app repo and the timetable data repo need to be present before building. The timetable repo URL is set through the `PUBLIC_TIMETABLE_REPO` environment variable, and the deployment base path through `BASE_PATH`:
 
 ```bash
-export PUBLIC_TIMETABLE_REPO=https://github.com/similicious/festival-timetable-cosy-2025
+export PUBLIC_TIMETABLE_REPO=https://github.com/Jakob-Muel/neiphos2k26-timetable-data
+export BASE_PATH=/neiphos2k26-timetable
 chmod +x ./clone-timetable-repo.sh && ./clone-timetable-repo.sh && corepack enable && yarn && yarn build
 ```
 
-## Timetable examples
-
-- [CoSy Festival 2025](https://github.com/similicious/festival-timetable-cosy-2025)
-- [Moyn Festival 2025](https://github.com/similicious/festival-timetable-moyn-2025)
+The `build` directory can then be served through any static hosting service.
