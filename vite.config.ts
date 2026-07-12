@@ -29,7 +29,7 @@ export default defineConfig({
       injectRegister: "script",
       base: "/",
       kit: {
-        adapterFallback: "index.html",
+        adapterFallback: "404.html",
         spa: true,
       },
       manifest: {
