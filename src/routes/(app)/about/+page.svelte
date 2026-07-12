@@ -1,5 +1,6 @@
 <script lang="ts">
   import { PUBLIC_TIMETABLE_REPO } from "$env/static/public";
+  import { base } from "$app/paths";
   import Prose from "$lib/components/Prose.svelte";
   import type { PageProps } from "../$types";
 
@@ -10,9 +11,7 @@
   <p>
     This is an unofficial <b>timetable app</b> for
     <b>{data.festival.name} {data.festival.year}</b>. I'm not affiliated with
-    the festival but I wanted to contribute something useful! If you found an
-    error in the timetable, <b>let me know via</b>
-    <a href="https://t.me/similicious" target="_blank">Telegram</a>!
+    the festival but I wanted to contribute something useful!
   </p>
 
   <h2>Install</h2>
@@ -20,7 +19,10 @@
   <p>
     You can <b>add this website to your homescreen</b>. The website will then
     become available offline.
-    <a href="https://www.installpwa.com/from/cosy.tmtbl.de" target="_blank">
+    <a
+      href="https://www.installpwa.com/from/jakob-muel.github.io"
+      target="_blank"
+    >
       See here how it's done!
     </a>
   </p>
@@ -28,7 +30,7 @@
   <h2>Share</h2>
 
   <img
-    src="/qr-code.svg"
+    src="{base}/qr-code.svg"
     alt="QR Code containing a link to this app"
     class="mb-0 h-auto w-full p-5"
   />
@@ -41,14 +43,23 @@
     </a>
     and I built this app in my free time. This timetable app is free software, feel
     free to
-    <a href="https://github.com/similicious/festival-timetable" target="_blank">
+    <a href="https://github.com/Jakob-Muel/neiphos2k26-timetable" target="_blank">
       check out the code
     </a>
-    and use it for your event! I'm also happy to hear your feedback. Contact me via
-    <a href="https://t.me/similicious" target="_blank">Telegram</a>.
+    and use it for your event!
   </p>
 
   <h2>Credits</h2>
+
+  <p>
+    This site is built on top of the open-source <a
+      href="https://github.com/similicious/festival-timetable"
+      target="_blank"
+    >
+      festival-timetable
+    </a> project by similicious. Huge thanks for building and sharing it — it made
+    setting this up for {data.festival.name} {data.festival.year} possible!
+  </p>
 
   <p>
     The app logo is created by <a
@@ -64,7 +75,7 @@
 <p class="mt-2 text-xs text-zinc-400">
   Built on {BUILD_DATE} from
   <a
-    href="https://github.com/similicious/festival-timetable/commit/{BUILD_COMMIT}"
+    href="https://github.com/Jakob-Muel/neiphos2k26-timetable/commit/{BUILD_COMMIT}"
     target="_blank"
     class="underline"
   >
