@@ -4,6 +4,7 @@
   import { pwaInfo } from "virtual:pwa-info";
   import { registerSW } from "virtual:pwa-register";
   import { page } from "$app/state";
+  import { base } from "$app/paths";
 
   import Navigation from "$lib/components/Navigation.svelte";
   import { getNavigation } from "$lib/utils/get-navigation";
@@ -16,7 +17,7 @@
   const navigation = $derived(getNavigation(stages));
 
   let navigationItem = $derived(
-    navigation.find((item) => item.path === page.url.pathname),
+    navigation.find((item) => base + item.path === page.url.pathname),
   );
 
   let pageHeading = $derived(`${navigationItem?.icon} ${navigationItem?.name}`);
