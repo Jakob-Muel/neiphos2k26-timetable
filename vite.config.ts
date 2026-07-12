@@ -92,14 +92,18 @@ function chunkNameOverride(): Plugin {
   return {
     name: "chunk-name-override-plugin",
     apply: "build" as const,
-    config(config: any) {
-      config.build.rolldownOptions.output.chunkFileNames =
-        config.build.rolldownOptions.output.chunkFileNames.replace(
+    outputOptions(options) {
+      if (
+        typeof options.chunkFileNames === "string" &&
+        options.chunkFileNames.includes("[hash]")
+      ) {
+        options.chunkFileNames = options.chunkFileNames.replace(
           "[hash]",
           `[name]-[hash]`,
         );
+      }
 
-      return config;
+      return options;
     },
   };
 }
