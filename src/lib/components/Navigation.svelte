@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Stage } from "$lib/models/stage";
   import { page } from "$app/state";
+  import { base } from "$app/paths";
   import { getNavigation } from "$lib/utils/get-navigation";
   let { stages }: { stages: Stage[] } = $props();
 
@@ -9,7 +10,7 @@
 
 <ul class="h-full overflow-y-auto text-4xl">
   {#each navigationItems as item}
-    {@const isCurrentPage = page.url.pathname === item.path}
+    {@const isCurrentPage = page.url.pathname === base + item.path}
     <li
       title={item.name}
       class={[
@@ -17,7 +18,7 @@
         isCurrentPage && "bg-zinc-800",
       ]}
     >
-      <a href={item.path} class="block px-1">
+      <a href={base + item.path} class="block px-1">
         {item.icon}
         <div class={["mt-1 w-full truncate text-xs "]}>
           {item.name}
