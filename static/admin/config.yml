@@ -100,7 +100,12 @@ collections:
           - label: "Public URL"
             name: "publicUrl"
             widget: "string"
-            hint: "The url is used for QR code generation."
+            hint: "The full website URL, e.g. https://jakob-muel.github.io/neiphos2k26-timetable/. Used for QR code generation."
+            pattern:
+              [
+                "^https?://.+",
+                "Must be a full URL starting with http:// or https://",
+              ]
           - label: "Stage order"
             required: false
             name: "stageOrder"
