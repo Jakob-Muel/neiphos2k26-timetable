@@ -6,7 +6,9 @@
 
   const festival = getFestival();
   const siteDomain = new URL(festival.publicUrl).host;
-  const repo = new URL(env.PUBLIC_TIMETABLE_REPO).pathname.substring(1);
+  const repo = new URL(env.PUBLIC_TIMETABLE_REPO).pathname
+    .substring(1)
+    .replace(/\.git$/, "");
 
   onMount(() => {
     import("@sveltia/cms").then((CMS) =>
